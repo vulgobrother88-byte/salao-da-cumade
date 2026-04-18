@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmado</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-5 text-center">
+
+    <div class="card p-4 shadow rounded-4">
+
+        <h3>✅ Agendamento Confirmado</h3>
+
+        <p>
+            {{ nome }}, seu horário foi reservado:
+            <br><strong>{{ data }} às {{ hora }}</strong>
+            
+            
+            <br>💅 Serviço: <strong>{{ servico }}</strong>
+            
+        </p>
+
+        <a href="{{ link }}" class="btn btn-success w-100 mb-2">
+            📲 Avisar profissional
+        </a>
+
+        <a href="/" class="btn btn-link">Voltar</a>
+
+    </div>
+
+</div>
+
+<script>
+// 🔔 NOTIFICAÇÃO
+if ("Notification" in window) {
+    Notification.requestPermission().then(permission => {
+        if (permission === "granted") {
+            new Notification("Agendamento confirmado ✅", {
+                body: "Seu horário foi reservado com sucesso!"
+            });
+        }
+    });
+}
+</script>
+
+</body>
+</html>
